@@ -1,5 +1,6 @@
 package com.bridgelabz.workshop;
 
+
 import java.util.Scanner;
 
 public class AddressBookMain {
@@ -9,7 +10,7 @@ public class AddressBookMain {
         boolean isExit = false;
         while (!isExit) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter options \n 1.Add Contact.\n 2.Edit Contact.\n 3.Delete Contact.\n 4. Search City.\n 5.Display Contact. \n 6. Exit");
+            System.out.println("Enter options \n 1.Add Contact.\n 2.Edit Contact.\n 3.Delete Contact.\n 4. Search City.\n 5. view City \n 6.Display Contact.\n 7.Exit");
             int userInput = scanner.nextInt();
             switch (userInput) {
                 case 1:
@@ -27,9 +28,13 @@ public class AddressBookMain {
                     String searchCity = scanner.next();
                     service.searchaPersoninaCity(searchCity);
                 case 5:
+                    System.out.println("Enter the city of a person to be viewed:");
+                    String viewCity = scanner.next();
+                    service.viewPersonInACity(viewCity);
+                case 6:
                     service.displayList();
                     break;
-                case 6:
+                case 7:
                     isExit = true;
                     break;
                 default:
