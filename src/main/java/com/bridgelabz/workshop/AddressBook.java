@@ -1,13 +1,18 @@
 package com.bridgelabz.workshop;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-public class AddressBook {
+public class AddressBook
+{
     static Scanner scanner = new Scanner(System.in);
     ArrayList<Contact> contactlist = new ArrayList<>();
+    private Map<String, ArrayList<Contact>> AddressBookMain = new HashMap<>();
 
-    public void addNewContact() {
+    public void addNewContact()
+    {
         Contact contact = new Contact();
 
         System.out.println("Enter First name:");
@@ -34,19 +39,35 @@ public class AddressBook {
         System.out.println("Enter Email:");
         contact.setEmailid(scanner.next());
 
-        contactlist.add(contact);
-        System.out.println("Contact Added Successfully");
+        System.out.println("Enter Book name to which you have to add contact");
+        String bookName  = scanner.next();
+        if(AddressBookMain.containsKey(bookName))
+        {
+            ArrayList<Contact> contactList = AddressBookMain.get(bookName);
+            contactList.add(contact);
+            AddressBookMain.put(bookName,contactList);
+            System.out.println("New Contact Has Been Added Successfully");
+        }
+        else
+        {
+            contactlist.add(contact);
+            AddressBookMain.put(bookName,contactlist);
+            System.out.println("New AddressBook is created and Added Contact in the AddressBook Successfully");
+        }
     }
-
-    public void editContact() {
+    public void editContact()
+    {
         String enteredFirstName;
         System.out.println("Enter First name of contact to edit it ");
         enteredFirstName = scanner.next();
-        for (int i = 0; i < contactlist.size(); i++) {
-            if (contactlist.get(i).getFirstname().equals(enteredFirstName)) {
+        for (int i = 0; i < contactlist.size(); i++)
+        {
+            if (contactlist.get(i).getFirstname().equals(enteredFirstName))
+            {
                 System.out.println("Enter the field to edit:\n1.First Name\n2.Last Name\n3.Address\n4.city\n5.State\n6.Zip\n7.Phone\n8.Email");
                 int userInput = scanner.nextInt();
-                switch (userInput) {
+                switch (userInput)
+                {
                     case 1:
                         System.out.println("Enter new first name");
                         contactlist.get(i).setFirstname(scanner.next());
@@ -88,17 +109,20 @@ public class AddressBook {
         System.out.println("Contact Edited Successfully");
     }
 
-    public void deleteContact(String name) {
-        for (int i = 0; i < contactlist.size(); i++) {
-            if (contactlist.get(i).getFirstname().equals(name)) {
+    public void deleteContact(String name)
+    {
+        for (int i = 0; i < contactlist.size(); i++)
+        {
+            if (contactlist.get(i).getFirstname().equals(name))
+            {
                 Contact contact = contactlist.get(i);
                 contactlist.remove(contact);
             }
         }
         System.out.println("Contact Deleted Successfully");
     }
-
-    public void displayList() {
+    public void displayList()
+    {
         for (Contact iterator : contactlist) System.out.println(iterator);
     }
 
