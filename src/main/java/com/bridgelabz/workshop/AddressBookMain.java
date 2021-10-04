@@ -2,20 +2,16 @@ package com.bridgelabz.workshop;
 
 import java.util.Scanner;
 
-public class AddressBookMain
-{
-    static AddressBookService service = new AddressBookService();
+public class AddressBookMain {
+    static AddressBook service = new AddressBook();
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         boolean isExit = false;
-        while (!isExit)
-        {
+        while (!isExit) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("\nEnter options\n 1.Add Contact.\n 2.Edit Contact.\n 3.Delete Contact.\n 4.Display Contact.\n 5.Exit.");
+            System.out.println("Enter options \n 1.Add Contact.\n 2.Edit Contact.\n 3.Delete Contact.\n 4.Display Contact. \n 5. Exit");
             int userInput = scanner.nextInt();
-            switch (userInput)
-            {
+            switch (userInput) {
                 case 1:
                     service.addNewContact();
                     break;
@@ -23,10 +19,10 @@ public class AddressBookMain
                     service.editContact();
                     break;
                 case 3:
-                    System.out.println("Enter the name of the person do you wants to delete:");
+                    System.out.println("Enter the Name of the Person do you Wants to Delete:");
                     String personName = scanner.next();
                     service.deleteContact(personName);
-                    break;
+
                 case 4:
                     service.displayList();
                     break;

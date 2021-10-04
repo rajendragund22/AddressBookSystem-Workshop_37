@@ -1,29 +1,42 @@
 package com.bridgelabz.workshop;
 
 class Contact {
-    private String firstName;
-    private String lastName;
+
+    private String firstname;
+    private String lastname;
     private String address;
     private String city;
     private String state;
-    private String email;
-    private String zip;
-    private String phoneNumber;
+    private String phonenumber;
+    private String emailid;
+    private long zipcode;
 
-    public String getFirstName() {
-        return firstName;
+    public void Contact(String firstname, String lastname, String address, String city, String state, String phonenumber, String emailid, long zipcode) {
+
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.phonenumber = phonenumber;
+        this.emailid = emailid;
+        this.zipcode = zipcode;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getAddress() {
@@ -50,34 +63,33 @@ class Contact {
         this.state = state;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
-    public String getZip() {
-        return zip;
+    public String getEmailid() {
+        return emailid;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setEmailid(String emailid) {
+        this.emailid = emailid;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public long getZipcode() {
+        return zipcode;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setZipcode(long zipcode) {
+        this.zipcode = zipcode;
     }
 
     @Override
     public String toString() {
-        return "ContactItems [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
-                + city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email
-                + "]";
+        return "Contact[ FirstName=" + firstname + ",LastName=" + lastname + ",Address=" + address + ",City=" + city + ",State=" + state +
+                ",PhoneNumber=" + phonenumber + ",Emailid=" + emailid + ",Zipcode=" + zipcode + "]";
     }
 }
