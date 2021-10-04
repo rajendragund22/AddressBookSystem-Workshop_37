@@ -1,13 +1,16 @@
 package com.bridgelabz.workshop;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AddressBookService {
+public class AddressBookService
+{
     static Scanner scanner = new Scanner(System.in);
     ArrayList<Contact> contactlist = new ArrayList<>();
 
-    public void addNewContact() {
+    public void addNewContact()
+    {
         Contact contact = new Contact();
         System.out.println("Enter First name:");
         contact.setFirstName(scanner.next());
@@ -36,16 +39,19 @@ public class AddressBookService {
         contactlist.add(contact);
         System.out.println("Contact Added Successfully");
     }
-
-    public void editContact() {
+    public void editContact()
+    {
         String enteredFirstName;
         System.out.println("Enter First name of contact to edit it ");
         enteredFirstName = scanner.next();
-        for (int i = 0; i < contactlist.size(); i++) {
-            if (contactlist.get(i).getFirstName().equals(enteredFirstName)) {
+        for (int i = 0; i < contactlist.size(); i++)
+        {
+            if (contactlist.get(i).getFirstName().equals(enteredFirstName))
+            {
                 System.out.println("Enter the field to edit:\n1.First Name\n2.Last Name\n3.Address\n4.city\n5.State\n6.Zip\n7.Phone\n8.Email");
                 int userInput = scanner.nextInt();
-                switch (userInput) {
+                switch (userInput)
+                {
                     case 1:
                         System.out.println("Enter new first name");
                         contactlist.get(i).setFirstName(scanner.next());
@@ -87,7 +93,20 @@ public class AddressBookService {
         System.out.println("Contact Edited Successfully");
     }
 
-    public void displayList() {
+    public void deleteContact(String name)
+    {
+        for (int i = 0; i < contactlist.size(); i++)
+        {
+            if (contactlist.get(i).getFirstName().equals(name))
+            {
+                Contact contact = contactlist.get(i);
+                contactlist.remove(contact);
+            }
+        }
+        System.out.println("Contact Deleted Successfully");
+    }
+    public void displayList()
+    {
         for (Contact iterator : contactlist) System.out.println(iterator);
     }
 
