@@ -2,7 +2,6 @@ package com.bridgelabz.workshop;
 
 import java.util.Comparator;
 
-
 public class Sort {
     Contacts contacts = new Contacts();
     static Comparator<Contacts> compareCity = new Comparator<>() {
