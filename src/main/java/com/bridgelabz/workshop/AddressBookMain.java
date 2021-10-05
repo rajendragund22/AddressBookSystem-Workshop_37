@@ -49,9 +49,14 @@ public class AddressBookMain
                     service.sortByName();
                     break;
                 case 9:
+                    System.out.println("Enter the State of a person to be viewed:");
+                    String SortByCity =  scanner.next();
+                    service.sortByCity();
+
+                case 10:
                     service.displayList();
                     break;
-                case 10:
+                case 11:
                     isExit = true;
                     break;
                 default:
