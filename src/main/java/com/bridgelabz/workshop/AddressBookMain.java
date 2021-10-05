@@ -1,67 +1,29 @@
 package com.bridgelabz.workshop;
 
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-public class AddressBookMain
-{
-    static AddressBook service = new AddressBook();
+public class AddressBookMain {
+    static Scanner scan = new Scanner(System.in);
 
-    public static void main(String[] args)
-    {
-        boolean isExit = false;
-        while (!isExit)
-        {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter options \n 1.Add Contact.\n 2.Edit Contact.\n 3.Delete Contact.\n 4.Search City.\n 5.search State.\n 6.view City.\n 7.view State.\n 8.Sort ByName.\n 9.Display Contact.\n 10.Exit.");
-            int userInput = scanner.nextInt();
-            switch (userInput)
-            {
-                case 1:
-                    service.addNewContact();
-                    break;
-                case 2:
-                    service.editContact();
-                    break;
-                case 3:
-                    System.out.println("Enter the Name of the Person do you Wants to Delete:");
-                    String personName = scanner.next();
-                    service.deleteContact(personName);
-                case 4:
-                    System.out.println("Enter the city to be Searched:");
-                    String searchCity = scanner.next();
-                    service.searchaPersoninaCity(searchCity);
-                case 5:
-                    System.out.println("Enter the state to be searched: ");
-                    String searchState = scanner.next();
-                    service.searchaPersoninaState(searchState);
-                case 6:
-                    System.out.println("Enter the city of a person to be viewed:");
-                    String viewCity =  scanner.next();
-                    service.viewPersonInACity(viewCity);
-                case 7:
-                    System.out.println("Enter the State of a person to be viewed:");
-                    String viewState =  scanner.next();
-                    service.viewPersonInAState(viewState);
-                case 8:
-                    System.out.println("Enter the State of a person to be viewed:");
-                    String SortByName =  scanner.next();
-                    service.sortByName();
-                    break;
-                case 9:
-                    System.out.println("Enter the State of a person to be viewed:");
-                    String SortByCity =  scanner.next();
-                    service.sortByCity();
-
-                case 10:
-                    service.displayList();
-                    break;
-                case 11:
-                    isExit = true;
-                    break;
-                default:
-                    System.out.println("Please enter valid input");
-            }
+    public static void main(String[] args) {
+        System.out.println("Welcome to Address Book System");
+        Map<String, AddressBook> map = new HashMap<>();
+        System.out.println("Enter Number of address book you want to add");
+        Integer count = scan.nextInt();
+        Integer i = 0;
+        while (i < count) {
+            System.out.println("Enter  book name");
+            String bookName = scan.next();
+            AddressBook addressBook = new AddressBook();
+            addressBook.operation();
+            map.put(bookName, addressBook);
+            i++;
         }
+        System.out.println(map);
+
+
     }
+
 }

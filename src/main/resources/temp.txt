@@ -1,0 +1,2 @@
+Contacts{firstName='Rajendra', lastName='Gund', address='Shirdi', city='Ahmednagar', state='Maharashtra', zip=414501, phoneNumber=9604315270, email='rajendra@gmail.com'}
+Contacts{firstName='Shushant', lastName='lad', address='pune', city='Pune', state='Maharashtra', zip=41414, phoneNumber=888876453, email='shushant@gmail.com'}
