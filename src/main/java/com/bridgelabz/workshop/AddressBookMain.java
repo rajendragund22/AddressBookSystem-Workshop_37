@@ -1,5 +1,6 @@
 package com.bridgelabz.workshop;
 
+
 import java.util.Scanner;
 
 public class AddressBookMain
@@ -12,7 +13,7 @@ public class AddressBookMain
         while (!isExit)
         {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter options \n 1.Add Contact.\n 2.Edit Contact.\n 3.Delete Contact.\n 4.Search City.\n 5.search State.\n 6.view City.\n 7.view State.\n 8.Display Contact.\n 9.Exit.");
+            System.out.println("Enter options \n 1.Add Contact.\n 2.Edit Contact.\n 3.Delete Contact.\n 4.Search City.\n 5.search State.\n 6.view City.\n 7.view State.\n 8.Sort ByName.\n 9.Display Contact.\n 10.Exit.");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
@@ -41,11 +42,16 @@ public class AddressBookMain
                 case 7:
                     System.out.println("Enter the State of a person to be viewed:");
                     String viewState =  scanner.next();
-                    service.viewPersonInAState (viewState);
+                    service.viewPersonInAState(viewState);
                 case 8:
-                    service.displayList();
+                    System.out.println("Enter the State of a person to be viewed:");
+                    String SortByName =  scanner.next();
+                    service.sortByName();
                     break;
                 case 9:
+                    service.displayList();
+                    break;
+                case 10:
                     isExit = true;
                     break;
                 default:
