@@ -1,18 +1,21 @@
 package com.bridgelabz.workshop;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class AddressBook {
+public class AddressBook
+{
     static Scanner scanner = new Scanner(System.in);
     ArrayList<Contact> contactlist = new ArrayList<>();
     private Map<String, ArrayList<Contact>> addressbook = new HashMap<>();
     private Object contact;
+    private Object bookName;
 
-    public void addNewContact() {
+    public void addNewContact()
+    {
         Contact contact = new Contact();
 
         System.out.println("Enter First name:");
@@ -40,32 +43,38 @@ public class AddressBook {
         contact.setEmailid(scanner.next());
 
         System.out.println("Enter Book name to which you have to add contact");
-        String bookName = scanner.next();
-        if (addressbook.containsKey(bookName)) {
-            contactlist.stream().filter(value -> value.getFirstname().equals(contact.getFirstname())).forEach(value ->
+        String bookName  = scanner.next();
+        if(addressbook.containsKey(bookName))
+        {
+            contactlist.stream().filter(value -> value.getFirstname(). equals(contact.getFirstname())).forEach(value ->
             {
                 System.out.println("Duplicate Contact");
                 addNewContact();
             });
             contactlist.add(contact);
-            addressbook.put(bookName, contactlist);
+            addressbook.put(bookName,contactlist);
             System.out.println("New Contact Has Been Added Successfully");
-        } else {
+        }
+        else
+        {
             contactlist.add(contact);
-            addressbook.put(bookName, contactlist);
+            addressbook.put(bookName,contactlist);
             System.out.println("New AddressBook is created and Added Contact in the AddressBook Successfully");
         }
     }
-
-    public void editContact() {
+    public void editContact()
+    {
         String enteredFirstName;
         System.out.println("Enter First name of contact to edit it ");
         enteredFirstName = scanner.next();
-        for (int i = 0; i < contactlist.size(); i++) {
-            if (contactlist.get(i).getFirstname().equals(enteredFirstName)) {
+        for (int i = 0; i < contactlist.size(); i++)
+        {
+            if (contactlist.get(i).getFirstname().equals(enteredFirstName))
+            {
                 System.out.println("Enter the field to edit:\n1.First Name\n2.Last Name\n3.Address\n4.city\n5.State\n6.Zip\n7.Phone\n8.Email");
                 int userInput = scanner.nextInt();
-                switch (userInput) {
+                switch (userInput)
+                {
                     case 1:
                         System.out.println("Enter new first name");
                         contactlist.get(i).setFirstname(scanner.next());
@@ -107,9 +116,12 @@ public class AddressBook {
         System.out.println("Contact Edited Successfully");
     }
 
-    public void deleteContact(String name) {
-        for (int i = 0; i < contactlist.size(); i++) {
-            if (contactlist.get(i).getFirstname().equals(name)) {
+    public void deleteContact(String name)
+    {
+        for (int i = 0; i < contactlist.size(); i++)
+        {
+            if (contactlist.get(i).getFirstname().equals(name))
+            {
                 Contact contact = contactlist.get(i);
                 contactlist.remove(contact);
             }
@@ -117,25 +129,52 @@ public class AddressBook {
         System.out.println("Contact Deleted Successfully");
     }
 
-    public void searchaPersoninaCity(String city) {
+    public void searchaPersoninaCity (String city)
+    {
         System.out.println("following are the persons who belongs to :" + city);
-        for (String bookName : addressbook.keySet()) {
+        for(String bookName : addressbook.keySet())
+        {
             addressbook.get(bookName);
             contactlist.stream().filter(value -> value.getCity().equals(city)).map(Contact::getFirstname).forEach(System.out::println);
         }
     }
 
-    public void viewPersonInACity(String city) {
-        for (String bookName : addressbook.keySet()) {
+    public void searchaPersoninaState (String state)
+    {
+        System.out.println("following are the persons who belongs to :" + state);
+        for(String bookName : addressbook.keySet())
+        {
+            addressbook.get(bookName);
+            contactlist.stream().filter(value -> value.getState().equals(state)).map(Contact::getFirstname).forEach(System.out::println);
+        }
+    }
+
+    public void viewPersonInACity (String city)
+    {
+        for(String bookName : addressbook.keySet())
+        {
             int countofPerson = 0;
             addressbook.get(bookName);
             contactlist.stream().filter(value -> value.getCity().equals(city)).map(Contact::getFirstname).forEach(System.out::println);
             countofPerson++;
-            System.out.println("total no.of.persons:" + countofPerson);
+            System.out.println("total no.of.persons: " +countofPerson);
         }
     }
 
-    public void displayList() {
+    public void viewPersonInAState (String state)
+    {
+        for(String bookName : addressbook.keySet())
+        {
+            int countofPerson = 0;
+            addressbook.get(bookName);
+            contactlist.stream().filter(value -> value.getState().equals(state)).map(Contact::getFirstname).forEach(System.out::println);
+            countofPerson++;
+            System.out.println("total no.of.persons: " +countofPerson );
+        }
+    }
+
+    public void displayList()
+    {
         for (Contact iterator : contactlist) System.out.println(iterator);
     }
 
